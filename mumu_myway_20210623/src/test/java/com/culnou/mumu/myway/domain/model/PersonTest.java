@@ -30,7 +30,21 @@ public class PersonTest {
 	/*
 	 * 個人は、目的の到達点であるビジョンを設定することができる。2021/6/25
 	 */
-	//NULLを防いで正しく初期化できる
+	//ビジョン設定のテスト
+	@Test
+	public void testCreateVision() {
+		String name;
+		String description;
+		Vision vision;
+		name = "my vision";
+		description = "my vision";
+		vision = new Vision(name, description);
+		System.out.println("*** visionId " + vision.getVisionId().getId());
+		assertEquals(name, vision.getName());
+		assertEquals(description, vision.getDescription());
+		assertNotNull(vision.getVisionId());
+	}
+	//自己カプセル化のセッターの例外テスト：NULLを防いで正しく初期化できる
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetName() {
 		String name;
@@ -40,7 +54,7 @@ public class PersonTest {
 		description = "my vision";
 		vision = new Vision(name, description);
 	}
-	
+	//自己カプセル化のセッターの例外テスト：NULLを防いで正しく初期化できる
 	@Test(expected = IllegalArgumentException.class)
 	public void testSetDescription() {
 		String name;
@@ -50,18 +64,7 @@ public class PersonTest {
 		description = null;
 		vision = new Vision(name, description);
 	}
-	@Test
-	public void testCreateVision() {
-		String name;
-		String description;
-		Vision vision;
-		name = "my vision";
-		description = "my vision";
-		vision = new Vision(name, description);
-		assertEquals(name, vision.getName());
-		assertEquals(description, vision.getDescription());
-		assertNotNull(vision.getVisionId());
-	}
+	
 	
 	
 		
